@@ -1,0 +1,23 @@
+[package]
+name = "sxtnt-verifier"
+description = "Fiat-Shamir transcript + challenge derivation + verifier-side relaxed-R1CS replay. Pairs with sxtnt-core."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+sxtnt-core = { path = "../core" }
+ark-ff = { workspace = true }
+ark-bn254 = { workspace = true }
+ark-serialize = { workspace = true }
+blake3 = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+hex = { workspace = true }
+
+[lib]
+name = "sxtnt_verifier"
+path = "src/lib.rs"

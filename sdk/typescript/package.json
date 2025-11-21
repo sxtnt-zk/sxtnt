@@ -1,0 +1,28 @@
+{
+  "name": "@sxtnt/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the SXTNT folding ZK coprocessor. Build folding proofs in the browser, verify them against the on-chain ProofRegistry on Solana.",
+  "license": "MIT",
+  "repository": "github:sxtnt-zk/sxtnt",
+  "homepage": "https://sxtnt.fun",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.31.0",
+    "@solana/web3.js": "^1.95.0",
+    "@noble/hashes": "^1.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^20.11.0"
+  }
+}

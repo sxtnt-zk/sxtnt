@@ -1,0 +1,30 @@
+[package]
+name = "sxtnt-core"
+description = "Folding scheme primitives: relaxed-R1CS accumulator, Pedersen commitment, IVC step (Nova-flavoured reference implementation)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+ark-ff = { workspace = true }
+ark-ec = { workspace = true }
+ark-bn254 = { workspace = true }
+ark-relations = { workspace = true }
+ark-r1cs-std = { workspace = true }
+ark-std = { workspace = true }
+ark-serialize = { workspace = true }
+halo2_proofs = { workspace = true }
+blake3 = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+hex = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+
+[lib]
+name = "sxtnt_core"
+path = "src/lib.rs"

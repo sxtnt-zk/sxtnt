@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+    "crates/verifier",
+    "crates/onchain",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/sxtnt-zk/sxtnt"
+homepage = "https://sxtnt.fun"
+authors = ["sxtnt-zk <sxtnt-zk@users.noreply.github.com>"]
+rust-version = "1.79"
+
+[workspace.dependencies]
+ark-ff = "0.4"
+ark-ec = "0.4"
+ark-bn254 = "0.4"
+ark-relations = "0.4"
+ark-r1cs-std = "0.4"
+ark-std = "0.4"
+ark-serialize = "0.4"
+halo2_proofs = { version = "0.3", default-features = false }
+blake3 = "1.5"
+thiserror = "1.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hex = "0.4"
+rand = "0.8"
+rand_chacha = "0.3"

@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  rust:
+    name: cargo check + test (no run)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo check
+        run: cargo check --workspace --exclude sxtnt-onchain
+      - name: cargo test --no-run
+        run: cargo test --workspace --exclude sxtnt-onchain --no-run
+
+  typescript:
+    name: npm build (sdk)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sdk/typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+
+  audit:
+    name: audit grep (placeholder + auto-gen + operational claims)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: no placeholders
+        run: |
+          set -e
+          ! grep -rnE "unimplemented!\(\)|todo!\(\)|//\s*Stub\b|would (listen|relay|fold|prove)|placeholder" \
+            --include="*.rs" --include="*.ts" \
+            crates sdk examples
+      - name: no auto-generated revision tags
+        run: |
+          set -e
+          ! grep -rnE "//\s*(rev|patch|build|hash|version)-[a-z0-9]{4,}|//\s*last-modified" \
+            --include="*.rs" --include="*.ts" --include="*.toml" \
+            crates sdk examples
+      - name: no operational lies in README
+        run: |
+          set -e
+          ! grep -nE "operating right now|live nodes|currently running.*(relay|node)" README.md

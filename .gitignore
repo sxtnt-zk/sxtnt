@@ -1,0 +1,31 @@
+# Local seed generator — never publish
+main.py
+generator.py
+builder.py
+scripts/seed-*.py
+*.gen.py
+__pycache__/
+*.pyc
+*.pyo
+
+# Rust
+target/
+Cargo.lock
+
+# Node / TypeScript
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
