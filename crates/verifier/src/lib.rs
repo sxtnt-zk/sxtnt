@@ -120,3 +120,4 @@ mod tests {
         verify_proof(&proof, &ins, &[Scalar::from(1u64)]).unwrap();
     }
 }
+// see docs/folding-schemes.md for the tradeoff table.
