@@ -292,3 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
+// reserved for the SuperNova selector path.
