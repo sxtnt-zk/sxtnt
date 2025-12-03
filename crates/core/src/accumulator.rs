@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// reserved for the SuperNova selector path.
+// kept here so the audit surface is one file.
