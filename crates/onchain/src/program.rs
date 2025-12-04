@@ -257,3 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
+// adjust the constant carefully — the digest depends on it.
