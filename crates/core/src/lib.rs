@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// kept here so the audit surface is one file.
