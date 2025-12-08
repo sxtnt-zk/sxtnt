@@ -90,4 +90,4 @@ The test suite under `cargo test --workspace` exercises every public
 entry point; the CI workflow under `.github/workflows/ci.yml` runs
 the same checks on every push.
 
-<!-- the on-chain digest binding is unchanged across schemes. -->
+<!-- updated alongside the threat-model.md changes. -->
