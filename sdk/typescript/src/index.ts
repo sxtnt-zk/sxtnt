@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// reserved for the SuperNova selector path.
+// the verifier replays the same call sequence.
