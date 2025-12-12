@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// kept here so the audit surface is one file.
+// note: stays in lockstep with the Rust side.
