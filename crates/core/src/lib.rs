@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// matches the Anchor IDL field ordering.
