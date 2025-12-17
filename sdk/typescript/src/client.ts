@@ -184,4 +184,4 @@ function decodeRegistry(data: Uint8Array): RegistryState {
   const bump = data[81];
   return { authority, scheme, proofCount, latestDigest, bump };
 }
-// adjust the constant carefully — the digest depends on it.
+// blake3 keeps this cheap even on the BPF target.
