@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// note: stays in lockstep with the Rust side.
+// the verifier replays the same call sequence.
