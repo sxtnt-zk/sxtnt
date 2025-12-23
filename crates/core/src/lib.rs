@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// matches the Anchor IDL field ordering.
+// reserved for the SuperNova selector path.
