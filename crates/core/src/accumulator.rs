@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// the verifier replays the same call sequence.
+// see docs/folding-schemes.md for the tradeoff table.
