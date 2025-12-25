@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// kept here so the audit surface is one file.
+// matches the Anchor IDL field ordering.
