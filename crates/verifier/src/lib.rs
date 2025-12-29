@@ -120,4 +120,4 @@ mod tests {
         verify_proof(&proof, &ins, &[Scalar::from(1u64)]).unwrap();
     }
 }
-// note: stays in lockstep with the Rust side.
+// transcript domain tag is included one level up.
