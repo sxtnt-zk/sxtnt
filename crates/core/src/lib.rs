@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// reserved for the SuperNova selector path.
+// note: stays in lockstep with the Rust side.
