@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// transcript domain tag is included one level up.
