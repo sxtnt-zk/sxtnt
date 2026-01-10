@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// reserved for the SuperNova selector path.
+// blake3 keeps this cheap even on the BPF target.
