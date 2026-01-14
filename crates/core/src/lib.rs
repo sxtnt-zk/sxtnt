@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// note: stays in lockstep with the Rust side.
+// kept here so the audit surface is one file.
