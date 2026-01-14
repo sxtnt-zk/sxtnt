@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// adjust the constant carefully — the digest depends on it.
+// blake3 keeps this cheap even on the BPF target.
