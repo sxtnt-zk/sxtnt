@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// kept here so the audit surface is one file.
+// adjust the constant carefully — the digest depends on it.
