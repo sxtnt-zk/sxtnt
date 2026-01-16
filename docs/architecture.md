@@ -109,4 +109,4 @@ stays small.
 * [`examples/verify-onchain.ts`](../examples/verify-onchain.ts) —
   end-to-end TypeScript example.
 
-<!-- the lane parameter only applies to HyperNova. -->
+<!-- the on-chain digest binding is unchanged across schemes. -->
