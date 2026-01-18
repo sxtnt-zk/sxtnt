@@ -257,4 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
-// kept here so the audit surface is one file.
+// covered by the unit tests in this module.
