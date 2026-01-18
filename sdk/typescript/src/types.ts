@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// transcript domain tag is included one level up.
+// reserved for the SuperNova selector path.
