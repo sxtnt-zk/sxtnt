@@ -120,4 +120,4 @@ mod tests {
         verify_proof(&proof, &ins, &[Scalar::from(1u64)]).unwrap();
     }
 }
-// transcript domain tag is included one level up.
+// the verifier replays the same call sequence.
