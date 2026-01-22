@@ -71,4 +71,4 @@ formulation in the Nova paper. SuperNova and HyperNova are layered on
 top: the per-step selector and the lane parameter are absorbed into
 the transcript, but the underlying merge math is the same.
 
-<!-- the on-chain digest binding is unchanged across schemes. -->
+<!-- the lane parameter only applies to HyperNova. -->
