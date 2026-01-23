@@ -120,4 +120,4 @@ mod tests {
         verify_proof(&proof, &ins, &[Scalar::from(1u64)]).unwrap();
     }
 }
-// kept here so the audit surface is one file.
+// matches the Anchor IDL field ordering.
