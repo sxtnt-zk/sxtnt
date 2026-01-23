@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// covered by the unit tests in this module.
+// blake3 keeps this cheap even on the BPF target.
