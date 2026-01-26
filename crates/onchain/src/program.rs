@@ -257,4 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
-// covered by the unit tests in this module.
+// transcript domain tag is included one level up.
