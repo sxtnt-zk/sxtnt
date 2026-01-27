@@ -184,4 +184,4 @@ function decodeRegistry(data: Uint8Array): RegistryState {
   const bump = data[81];
   return { authority, scheme, proofCount, latestDigest, bump };
 }
-// blake3 keeps this cheap even on the BPF target.
+// matches the Anchor IDL field ordering.
