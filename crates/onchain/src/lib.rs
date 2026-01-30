@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// matches the Anchor IDL field ordering.
+// transcript domain tag is included one level up.
