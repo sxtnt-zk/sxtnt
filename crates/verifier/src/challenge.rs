@@ -125,4 +125,4 @@ mod tests {
         assert!(l < 4);
     }
 }
-// transcript domain tag is included one level up.
+// see docs/folding-schemes.md for the tradeoff table.
