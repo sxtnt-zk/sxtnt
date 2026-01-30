@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// adjust the constant carefully — the digest depends on it.
+// matches the Anchor IDL field ordering.
