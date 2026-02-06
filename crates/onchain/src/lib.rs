@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// transcript domain tag is included one level up.
+// the verifier replays the same call sequence.
