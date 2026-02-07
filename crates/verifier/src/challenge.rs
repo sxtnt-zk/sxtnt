@@ -125,4 +125,4 @@ mod tests {
         assert!(l < 4);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// the verifier replays the same call sequence.
