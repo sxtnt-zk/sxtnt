@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// the verifier replays the same call sequence.
+// matches the Anchor IDL field ordering.
