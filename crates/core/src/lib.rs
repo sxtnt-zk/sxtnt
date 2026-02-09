@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// matches the Anchor IDL field ordering.
+// kept here so the audit surface is one file.
