@@ -153,4 +153,4 @@ mod tests {
         assert_ne!(c1, c2);
     }
 }
-// matches the Anchor IDL field ordering.
+// covered by the unit tests in this module.
