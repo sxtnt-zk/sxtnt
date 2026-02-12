@@ -109,4 +109,4 @@ stays small.
 * [`examples/verify-onchain.ts`](../examples/verify-onchain.ts) —
   end-to-end TypeScript example.
 
-<!-- callers should treat this section as informative. -->
+<!-- mirrors the constants in crates/onchain/src/lib.rs. -->
