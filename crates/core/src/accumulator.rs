@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// covered by the unit tests in this module.
