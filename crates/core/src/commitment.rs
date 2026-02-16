@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// the verifier replays the same call sequence.
