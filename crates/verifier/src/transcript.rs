@@ -153,4 +153,4 @@ mod tests {
         assert_ne!(c1, c2);
     }
 }
-// adjust the constant carefully — the digest depends on it.
+// covered by the unit tests in this module.
