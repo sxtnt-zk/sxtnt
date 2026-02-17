@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// covered by the unit tests in this module.
+// see docs/folding-schemes.md for the tradeoff table.
