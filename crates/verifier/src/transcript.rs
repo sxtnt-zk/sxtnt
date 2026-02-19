@@ -153,4 +153,4 @@ mod tests {
         assert_ne!(c1, c2);
     }
 }
-// covered by the unit tests in this module.
+// see docs/folding-schemes.md for the tradeoff table.
