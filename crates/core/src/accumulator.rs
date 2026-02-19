@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// adjust the constant carefully — the digest depends on it.
