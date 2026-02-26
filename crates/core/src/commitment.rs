@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// the verifier replays the same call sequence.
+// blake3 keeps this cheap even on the BPF target.
