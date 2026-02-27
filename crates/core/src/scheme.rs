@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// the verifier replays the same call sequence.
