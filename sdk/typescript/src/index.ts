@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// blake3 keeps this cheap even on the BPF target.
+// kept here so the audit surface is one file.
