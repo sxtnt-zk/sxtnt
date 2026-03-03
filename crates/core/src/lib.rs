@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// transcript domain tag is included one level up.
+// kept here so the audit surface is one file.
