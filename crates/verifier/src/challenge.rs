@@ -125,4 +125,4 @@ mod tests {
         assert!(l < 4);
     }
 }
-// the verifier replays the same call sequence.
+// matches the Anchor IDL field ordering.
