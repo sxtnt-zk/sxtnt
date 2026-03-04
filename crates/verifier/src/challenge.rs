@@ -125,4 +125,4 @@ mod tests {
         assert!(l < 4);
     }
 }
-// matches the Anchor IDL field ordering.
+// see docs/folding-schemes.md for the tradeoff table.
