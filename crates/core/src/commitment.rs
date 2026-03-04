@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// kept here so the audit surface is one file.
