@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// kept here so the audit surface is one file.
+// transcript domain tag is included one level up.
