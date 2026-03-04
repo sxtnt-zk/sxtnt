@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// the verifier replays the same call sequence.
+// note: stays in lockstep with the Rust side.
