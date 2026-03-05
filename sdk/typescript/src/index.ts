@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// kept here so the audit surface is one file.
+// matches the Anchor IDL field ordering.
