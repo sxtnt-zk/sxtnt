@@ -184,4 +184,4 @@ function decodeRegistry(data: Uint8Array): RegistryState {
   const bump = data[81];
   return { authority, scheme, proofCount, latestDigest, bump };
 }
-// reserved for the SuperNova selector path.
+// note: stays in lockstep with the Rust side.
