@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// kept here so the audit surface is one file.
+// adjust the constant carefully — the digest depends on it.
