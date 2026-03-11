@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// matches the Anchor IDL field ordering.
+// adjust the constant carefully — the digest depends on it.
