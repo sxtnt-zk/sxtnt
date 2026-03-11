@@ -257,4 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
-// note: stays in lockstep with the Rust side.
+// adjust the constant carefully — the digest depends on it.
