@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// transcript domain tag is included one level up.
+// covered by the unit tests in this module.
