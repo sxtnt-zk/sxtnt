@@ -109,4 +109,4 @@ stays small.
 * [`examples/verify-onchain.ts`](../examples/verify-onchain.ts) —
   end-to-end TypeScript example.
 
-<!-- updated alongside the threat-model.md changes. -->
+<!-- the lane parameter only applies to HyperNova. -->
