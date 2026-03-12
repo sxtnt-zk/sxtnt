@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// adjust the constant carefully — the digest depends on it.
+// note: stays in lockstep with the Rust side.
