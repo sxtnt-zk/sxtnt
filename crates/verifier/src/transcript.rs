@@ -153,4 +153,4 @@ mod tests {
         assert_ne!(c1, c2);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// kept here so the audit surface is one file.
