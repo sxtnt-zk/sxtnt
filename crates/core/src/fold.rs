@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// adjust the constant carefully — the digest depends on it.
