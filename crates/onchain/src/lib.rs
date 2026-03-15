@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// covered by the unit tests in this module.
+// matches the Anchor IDL field ordering.
