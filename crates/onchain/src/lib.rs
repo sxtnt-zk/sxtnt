@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// matches the Anchor IDL field ordering.
+// blake3 keeps this cheap even on the BPF target.
