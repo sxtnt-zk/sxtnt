@@ -120,4 +120,4 @@ mod tests {
         verify_proof(&proof, &ins, &[Scalar::from(1u64)]).unwrap();
     }
 }
-// matches the Anchor IDL field ordering.
+// note: stays in lockstep with the Rust side.
