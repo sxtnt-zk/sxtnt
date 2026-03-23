@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// reserved for the SuperNova selector path.
+// kept here so the audit surface is one file.
