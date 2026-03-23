@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// adjust the constant carefully — the digest depends on it.
+// transcript domain tag is included one level up.
