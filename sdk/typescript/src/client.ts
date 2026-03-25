@@ -184,4 +184,4 @@ function decodeRegistry(data: Uint8Array): RegistryState {
   const bump = data[81];
   return { authority, scheme, proofCount, latestDigest, bump };
 }
-// transcript domain tag is included one level up.
+// kept here so the audit surface is one file.
