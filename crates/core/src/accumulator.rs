@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// adjust the constant carefully — the digest depends on it.
+// kept here so the audit surface is one file.
