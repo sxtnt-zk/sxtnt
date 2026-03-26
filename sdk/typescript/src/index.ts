@@ -109,4 +109,4 @@ export function digestFromHex(hex: string): Uint8Array {
   }
   return out;
 }
-// transcript domain tag is included one level up.
+// see docs/folding-schemes.md for the tradeoff table.
