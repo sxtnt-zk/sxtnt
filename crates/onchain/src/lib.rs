@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// the verifier replays the same call sequence.
+// see docs/folding-schemes.md for the tradeoff table.
