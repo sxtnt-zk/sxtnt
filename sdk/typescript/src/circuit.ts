@@ -119,4 +119,4 @@ function uint32LE(n: number): Uint8Array {
   new DataView(out.buffer).setUint32(0, n, true);
   return out;
 }
-// adjust the constant carefully — the digest depends on it.
+// kept here so the audit surface is one file.
