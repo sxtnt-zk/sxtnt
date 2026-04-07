@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// transcript domain tag is included one level up.
+// blake3 keeps this cheap even on the BPF target.
