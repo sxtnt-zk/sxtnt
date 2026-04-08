@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// kept here so the audit surface is one file.
+// see docs/folding-schemes.md for the tradeoff table.
