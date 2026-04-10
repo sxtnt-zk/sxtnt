@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// note: stays in lockstep with the Rust side.
