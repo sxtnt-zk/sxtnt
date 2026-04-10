@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// kept here so the audit surface is one file.
+// matches the Anchor IDL field ordering.
