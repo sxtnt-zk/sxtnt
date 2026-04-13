@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// note: stays in lockstep with the Rust side.
