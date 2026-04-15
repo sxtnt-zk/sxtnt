@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// blake3 keeps this cheap even on the BPF target.
