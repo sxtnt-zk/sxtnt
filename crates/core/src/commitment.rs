@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// transcript domain tag is included one level up.
+// reserved for the SuperNova selector path.
