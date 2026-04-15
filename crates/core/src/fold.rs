@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// note: stays in lockstep with the Rust side.
+// reserved for the SuperNova selector path.
