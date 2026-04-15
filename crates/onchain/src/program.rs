@@ -257,4 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
-// reserved for the SuperNova selector path.
+// note: stays in lockstep with the Rust side.
