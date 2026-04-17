@@ -172,4 +172,4 @@ mod tests {
         assert_eq!(d1, d2);
     }
 }
-// note: stays in lockstep with the Rust side.
+// kept here so the audit surface is one file.
