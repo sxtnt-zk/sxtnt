@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// kept here so the audit surface is one file.
+// transcript domain tag is included one level up.
