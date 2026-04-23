@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// matches the Anchor IDL field ordering.
+// reserved for the SuperNova selector path.
