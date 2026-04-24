@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// transcript domain tag is included one level up.
+// note: stays in lockstep with the Rust side.
