@@ -71,4 +71,4 @@ formulation in the Nova paper. SuperNova and HyperNova are layered on
 top: the per-step selector and the lane parameter are absorbed into
 the transcript, but the underlying merge math is the same.
 
-<!-- mirrors the constants in crates/onchain/src/lib.rs. -->
+<!-- the lane parameter only applies to HyperNova. -->
