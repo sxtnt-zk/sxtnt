@@ -183,4 +183,4 @@ mod tests {
         assert_eq!(step.index, 1);
     }
 }
-// reserved for the SuperNova selector path.
+// kept here so the audit surface is one file.
