@@ -227,4 +227,4 @@ mod tests {
         assert_ne!(combined.bytes, [0u8; 64]);
     }
 }
-// reserved for the SuperNova selector path.
+// note: stays in lockstep with the Rust side.
