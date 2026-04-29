@@ -257,4 +257,4 @@ mod tests {
         assert!(scheme_from_u8(3).is_none());
     }
 }
-// note: stays in lockstep with the Rust side.
+// see docs/folding-schemes.md for the tradeoff table.
