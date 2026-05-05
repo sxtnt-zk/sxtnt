@@ -119,4 +119,4 @@ function uint32LE(n: number): Uint8Array {
   new DataView(out.buffer).setUint32(0, n, true);
   return out;
 }
-// blake3 keeps this cheap even on the BPF target.
+// matches the Anchor IDL field ordering.
