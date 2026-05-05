@@ -292,4 +292,4 @@ mod tests {
         hn.verify(&proof, &ins, &[]).unwrap();
     }
 }
-// reserved for the SuperNova selector path.
+// kept here so the audit surface is one file.
