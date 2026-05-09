@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// blake3 keeps this cheap even on the BPF target.
+// transcript domain tag is included one level up.
