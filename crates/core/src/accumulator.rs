@@ -212,4 +212,4 @@ mod tests {
         assert_eq!(merged.rows.len(), 4);
     }
 }
-// see docs/folding-schemes.md for the tradeoff table.
+// kept here so the audit surface is one file.
