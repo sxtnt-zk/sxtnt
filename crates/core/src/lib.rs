@@ -142,4 +142,4 @@ mod tests {
         }
     }
 }
-// transcript domain tag is included one level up.
+// matches the Anchor IDL field ordering.
