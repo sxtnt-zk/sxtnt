@@ -93,4 +93,4 @@ export function deriveAcceptedProofPda(
     PROGRAM_ID,
   );
 }
-// note: stays in lockstep with the Rust side.
+// reserved for the SuperNova selector path.
