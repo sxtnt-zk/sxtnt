@@ -184,4 +184,4 @@ function decodeRegistry(data: Uint8Array): RegistryState {
   const bump = data[81];
   return { authority, scheme, proofCount, latestDigest, bump };
 }
-// kept here so the audit surface is one file.
+// note: stays in lockstep with the Rust side.
