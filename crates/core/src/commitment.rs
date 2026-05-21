@@ -18,23 +18,39 @@
 //! explicit so callers can audit it.
 
 use ark_ec::{AffineRepr, CurveGroup};
-use ark_ff::{Field, PrimeField, UniformRand};
+use ark_ff::{PrimeField, UniformRand};
 use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
 use rand::SeedableRng;
 use rand_chacha::ChaCha20Rng;
 use serde::{Deserialize, Serialize};
+use serde_big_array::BigArray;
 
 use crate::{domain_hasher, scalar_from_bytes, scalar_to_bytes, CoreError, Curve, Scalar};
+
+/// 64-byte affine bn254 G1 point. Wrapped so it can derive serde even
+/// though plain `[u8; 64]` does not satisfy the serde array bound.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct AffineBytes(#[serde(with = "BigArray")] pub [u8; 64]);
+
+impl AffineBytes {
+    /// Zero-filled sentinel used when an opening fails. The byte
+    /// pattern intentionally does NOT decode to a valid point — callers
+    /// must check the curve-side `to_point()` for a `Some(_)` result.
+    pub fn zero() -> Self {
+        Self([0u8; 64])
+    }
+}
 
 /// A commitment key: a vector of group generators plus a separate
 /// blinding generator `H`. The vector length determines the maximum
 /// message size that can be committed in one shot.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct CommitmentKey {
-    /// Serialised affine generators `G_0 .. G_{n-1}` (32 bytes each).
-    pub generators: Vec<[u8; 64]>,
+    /// Serialised affine generators `G_0 .. G_{n-1}` (64 bytes each,
+    /// uncompressed).
+    pub generators: Vec<AffineBytes>,
     /// Blinding generator `H` (64-byte affine).
-    pub blinder: [u8; 64],
+    pub blinder: AffineBytes,
 }
 
 impl CommitmentKey {
@@ -47,15 +63,15 @@ impl CommitmentKey {
         h.update(&(n as u64).to_le_bytes());
         seed.copy_from_slice(h.finalize().as_bytes());
         let mut rng = ChaCha20Rng::from_seed(seed);
-        let generators: Vec<[u8; 64]> = (0..n)
+        let generators: Vec<AffineBytes> = (0..n)
             .map(|_| {
                 let p = Curve::generator() * Scalar::rand(&mut rng);
-                affine_to_bytes(&p.into_affine())
+                AffineBytes(affine_to_bytes(&p.into_affine()))
             })
             .collect();
         let blinder = {
             let p = Curve::generator() * Scalar::rand(&mut rng);
-            affine_to_bytes(&p.into_affine())
+            AffineBytes(affine_to_bytes(&p.into_affine()))
         };
         Self { generators, blinder }
     }
@@ -72,19 +88,24 @@ impl CommitmentKey {
 pub struct Commitment {
     /// Serialised affine point. Length is exactly 64 bytes for
     /// uncompressed bn254 G1.
-    pub bytes: [u8; 64],
+    pub bytes: AffineBytes,
 }
 
 impl Commitment {
     /// Build a commitment from a curve point.
     pub fn from_point(p: &Curve) -> Self {
-        Self { bytes: affine_to_bytes(p) }
+        Self { bytes: AffineBytes(affine_to_bytes(p)) }
+    }
+
+    /// Read the raw 64-byte uncompressed affine representation.
+    pub fn raw_bytes(&self) -> &[u8; 64] {
+        &self.bytes.0
     }
 
     /// Materialise the curve point. Returns `None` if the bytes were
     /// somehow corrupted.
     pub fn to_point(&self) -> Option<Curve> {
-        affine_from_bytes(&self.bytes)
+        affine_from_bytes(&self.bytes.0)
     }
 
     /// Homomorphic combine: `self + r * other`. This is exactly the
@@ -128,11 +149,11 @@ impl<'a> PedersenCommitter<'a> {
         }
         let mut acc = Curve::zero().into_group();
         for (m, g_bytes) in msg.iter().zip(self.ck.generators.iter()) {
-            let g = affine_from_bytes(g_bytes).ok_or(CoreError::OpeningMismatch)?;
+            let g = affine_from_bytes(&g_bytes.0).ok_or(CoreError::OpeningMismatch)?;
             acc += g.into_group() * *m;
         }
         let r = derive_blinder(msg, domain);
-        let h = affine_from_bytes(&self.ck.blinder).ok_or(CoreError::OpeningMismatch)?;
+        let h = affine_from_bytes(&self.ck.blinder.0).ok_or(CoreError::OpeningMismatch)?;
         acc += h.into_group() * r;
         Ok(Commitment::from_point(&acc.into_affine()))
     }
@@ -224,7 +245,7 @@ mod tests {
         // Note: deterministic blinder breaks strict homomorphism, but
         // the curve point arithmetic itself is checked by `combine`.
         let combined = c1.combine(&c2, &r);
-        assert_ne!(combined.bytes, [0u8; 64]);
+        assert_ne!(combined.bytes.0, [0u8; 64]);
     }
 }
 // covered by the unit tests in this module.

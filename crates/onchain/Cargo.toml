@@ -14,7 +14,6 @@ default = []
 [dependencies]
 solana-program = "1.18"
 anchor-lang = "0.31"
-spl-token-2022 = { version = "3", default-features = false, features = ["no-entrypoint"] }
 sxtnt-core = { path = "../core" }
 blake3 = { workspace = true }
 thiserror = { workspace = true }

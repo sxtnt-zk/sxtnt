@@ -114,11 +114,11 @@ fn squeeze_challenge(
 ) -> Result<Scalar, CoreError> {
     let mut h = domain_hasher(b"fold.challenge")?;
     h.update(&acc.u);
-    h.update(&acc.commitment_z.bytes);
-    h.update(&acc.commitment_e.bytes);
+    h.update(acc.commitment_z.raw_bytes());
+    h.update(acc.commitment_e.raw_bytes());
     h.update(&fresh.u);
-    h.update(&fresh.commitment_z.bytes);
-    h.update(&fresh.commitment_e.bytes);
+    h.update(fresh.commitment_z.raw_bytes());
+    h.update(fresh.commitment_e.raw_bytes());
     h.update(&(public_input.len() as u64).to_le_bytes());
     for p in public_input {
         h.update(&scalar_to_bytes(p));

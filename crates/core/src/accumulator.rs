@@ -119,6 +119,16 @@ impl Accumulator {
         Ok(())
     }
 
+    /// Verify the relaxed-R1CS check by lowering every stored row into
+    /// an arkworks `ConstraintSystem` and calling `is_satisfied()`.
+    /// Equivalent to [`Self::check`] but exercises the full
+    /// `ark-relations` / `ark-r1cs-std` stack, so it doubles as the
+    /// reference implementation a constraint-system audit can replay.
+    pub fn check_via_cs(&self) -> Result<(), CoreError> {
+        let u = self.u_scalar().ok_or(CoreError::RelaxedR1csViolated(0))?;
+        crate::r1cs::verify_relaxed_via_cs(&self.rows, &u)
+    }
+
     /// Merge another accumulator into this one using folding challenge
     /// `r`. Both accumulators must agree on the row count.
     ///
