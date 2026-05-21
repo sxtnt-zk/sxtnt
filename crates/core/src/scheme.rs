@@ -17,7 +17,8 @@ use serde::{Deserialize, Serialize};
 use crate::accumulator::Accumulator;
 use crate::commitment::CommitmentKey;
 use crate::fold::{fold_chain, FoldStep};
-use crate::{CoreError, Scalar};
+use crate::halo2_compat::pasta_inner_product;
+use crate::{scalar_from_bytes, CoreError, Scalar};
 
 /// The kind of folding scheme being instantiated. Reflected in the
 /// transcript domain tag so witnesses produced by one scheme never
@@ -54,6 +55,29 @@ pub struct FoldingProof {
     pub final_acc: Accumulator,
     /// The ordered list of fold steps. Length is `instances - 1`.
     pub steps: Vec<FoldStep>,
+    /// Pasta-field cross-check digest. Computed via
+    /// `halo2_proofs::arithmetic::compute_inner_product` over the
+    /// final accumulator's per-row scalars; the verifier recomputes
+    /// the same digest and rejects the proof if the two values disagree.
+    /// This guards against a class of field-bound prover bugs that
+    /// would otherwise sneak past the bn254-only relaxed-R1CS check.
+    pub pasta_cross_check: [u8; 32],
+}
+
+/// Compute the Pasta-field cross-check digest for an accumulator.
+/// Returns the 32-byte little-endian representation of
+/// `<Az, Bz>` evaluated in the Pasta base field, where `Az` and
+/// `Bz` are the per-row witness columns.
+pub fn pasta_cross_check_digest(acc: &Accumulator) -> Result<[u8; 32], CoreError> {
+    let mut az: Vec<Scalar> = Vec::with_capacity(acc.rows.len());
+    let mut bz: Vec<Scalar> = Vec::with_capacity(acc.rows.len());
+    for (i, row) in acc.rows.iter().enumerate() {
+        let a = scalar_from_bytes(&row.az).ok_or(CoreError::RelaxedR1csViolated(i))?;
+        let b = scalar_from_bytes(&row.bz).ok_or(CoreError::RelaxedR1csViolated(i))?;
+        az.push(a);
+        bz.push(b);
+    }
+    Ok(pasta_inner_product(&az, &bz))
 }
 
 /// The folding scheme entry point.
@@ -89,10 +113,12 @@ impl FoldingScheme for Nova {
         public_input: &[Scalar],
     ) -> Result<FoldingProof, CoreError> {
         let (final_acc, steps) = fold_chain(ck, instances, public_input)?;
+        let pasta_cross_check = pasta_cross_check_digest(&final_acc)?;
         Ok(FoldingProof {
             scheme: SchemeKind::Nova,
             final_acc,
             steps,
+            pasta_cross_check,
         })
     }
 
@@ -121,6 +147,12 @@ impl FoldingScheme for Nova {
             || replay_acc.commitment_z != proof.final_acc.commitment_z
             || replay_acc.commitment_e != proof.final_acc.commitment_e
         {
+            return Err(CoreError::OpeningMismatch);
+        }
+        // Independent Pasta-field replay of `<Az, Bz>`. Must match the
+        // value the prover recorded.
+        let replay_digest = pasta_cross_check_digest(&proof.final_acc)?;
+        if replay_digest != proof.pasta_cross_check {
             return Err(CoreError::OpeningMismatch);
         }
         proof.final_acc.check()
@@ -152,10 +184,12 @@ impl FoldingScheme for SuperNova {
     ) -> Result<FoldingProof, CoreError> {
         let pi = augment_public_input(public_input, &self.selector);
         let (final_acc, steps) = fold_chain(ck, instances, &pi)?;
+        let pasta_cross_check = pasta_cross_check_digest(&final_acc)?;
         Ok(FoldingProof {
             scheme: SchemeKind::SuperNova,
             final_acc,
             steps,
+            pasta_cross_check,
         })
     }
 
@@ -171,6 +205,10 @@ impl FoldingScheme for SuperNova {
         let pi = augment_public_input(public_input, &self.selector);
         let (replay_acc, _) = fold_chain(&dummy_ck(), instances, &pi)?;
         if replay_acc.u != proof.final_acc.u {
+            return Err(CoreError::OpeningMismatch);
+        }
+        let replay_digest = pasta_cross_check_digest(&proof.final_acc)?;
+        if replay_digest != proof.pasta_cross_check {
             return Err(CoreError::OpeningMismatch);
         }
         proof.final_acc.check()
@@ -195,10 +233,12 @@ impl FoldingScheme for HyperNova {
     ) -> Result<FoldingProof, CoreError> {
         let pi = augment_public_input_u8(public_input, self.lanes);
         let (final_acc, steps) = fold_chain(ck, instances, &pi)?;
+        let pasta_cross_check = pasta_cross_check_digest(&final_acc)?;
         Ok(FoldingProof {
             scheme: SchemeKind::HyperNova,
             final_acc,
             steps,
+            pasta_cross_check,
         })
     }
 
@@ -214,6 +254,10 @@ impl FoldingScheme for HyperNova {
         let pi = augment_public_input_u8(public_input, self.lanes);
         let (replay_acc, _) = fold_chain(&dummy_ck(), instances, &pi)?;
         if replay_acc.u != proof.final_acc.u {
+            return Err(CoreError::OpeningMismatch);
+        }
+        let replay_digest = pasta_cross_check_digest(&proof.final_acc)?;
+        if replay_digest != proof.pasta_cross_check {
             return Err(CoreError::OpeningMismatch);
         }
         proof.final_acc.check()

@@ -8,9 +8,10 @@
 //!
 //! The implementation deliberately stays compact and readable. It uses
 //! the arkworks ecosystem (`ark-bn254`, `ark-ff`, `ark-relations`,
-//! `ark-r1cs-std`) for the field/curve arithmetic, `halo2_proofs`'s
-//! field traits for cross-checking the constraint shape, and `blake3`
-//! for the Fiat-Shamir transcript and commitment binding.
+//! `ark-r1cs-std`) for the field/curve arithmetic and the relaxed-R1CS
+//! constraint system bridge in [`r1cs`], the `halo2_proofs` arithmetic
+//! crate for a parallel Pasta-field cross-check in [`halo2_compat`],
+//! and `blake3` for the Fiat-Shamir transcript and commitment binding.
 //!
 //! This crate is not a production verifier. It is the canonical
 //! reference the rest of the workspace (`verifier`, `onchain`, `sdk`)
@@ -23,6 +24,8 @@
 pub mod accumulator;
 pub mod commitment;
 pub mod fold;
+pub mod halo2_compat;
+pub mod r1cs;
 pub mod scheme;
 
 use thiserror::Error;
