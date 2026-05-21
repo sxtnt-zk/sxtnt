@@ -18,6 +18,9 @@ thiserror = { workspace = true }
 serde = { workspace = true }
 hex = { workspace = true }
 
+[dev-dependencies]
+ark-std = { workspace = true }
+
 [lib]
 name = "sxtnt_verifier"
 path = "src/lib.rs"
