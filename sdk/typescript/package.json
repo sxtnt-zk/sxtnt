@@ -1,5 +1,5 @@
 {
-  "name": "@sxtnt/sdk",
+  "name": "@sxtnt_zk/sdk",
   "version": "0.1.0",
   "description": "TypeScript SDK for the SXTNT folding ZK coprocessor. Build folding proofs in the browser, verify them against the on-chain ProofRegistry on Solana.",
   "license": "MIT",

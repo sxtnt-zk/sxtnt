@@ -221,7 +221,7 @@ sxtnt/
 │   ├── verifier/              Fiat-Shamir transcript + verify_proof
 │   └── onchain/               Solana account layout + proof digest
 ├── sdk/
-│   └── typescript/            @sxtnt/sdk
+│   └── typescript/            @sxtnt_zk/sdk
 ├── crates/core/examples/nova-fold.rs  end-to-end Rust example
 ├── examples/
 │   └── verify-onchain.ts      end-to-end TypeScript example
