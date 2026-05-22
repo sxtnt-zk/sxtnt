@@ -24,6 +24,7 @@ A folding ZK coprocessor. Sub-proofs in, one verifiable measurement out.
 [![Folding](https://img.shields.io/badge/scheme-Nova%20%2F%20SuperNova%20%2F%20HyperNova-FFD93D?style=flat-square)](./docs/folding-schemes.md)
 [![Build](https://img.shields.io/github/actions/workflow/status/sxtnt-zk/sxtnt/ci.yml?branch=main&style=flat-square&color=FFD93D)](https://github.com/sxtnt-zk/sxtnt/actions/workflows/ci.yml)
 [![Stars](https://img.shields.io/github/stars/sxtnt-zk/sxtnt?style=flat-square&color=D4AF37)](https://github.com/sxtnt-zk/sxtnt/stargazers)
+[![npm](https://img.shields.io/npm/v/@sxtnt_zk/sdk?style=flat-square&color=cb3837&label=npm)](https://www.npmjs.com/package/@sxtnt_zk/sdk)
 
 </div>
 
@@ -125,6 +126,18 @@ and verifies the resulting proof. The full source is in
 [`crates/core/examples/nova-fold.rs`](./crates/core/examples/nova-fold.rs).
 
 ### TypeScript SDK
+
+Install from npm:
+
+```bash
+npm i @sxtnt_zk/sdk
+```
+
+Published at [npmjs.com/package/@sxtnt_zk/sdk](https://www.npmjs.com/package/@sxtnt_zk/sdk).
+A fifteen-second sanity check that the artifact described in this
+README is the artifact a consumer actually downloads.
+
+Or build the SDK locally from this repository:
 
 ```bash
 cd sdk/typescript
