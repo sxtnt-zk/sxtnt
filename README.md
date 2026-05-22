@@ -8,6 +8,12 @@
 
 A folding ZK coprocessor. Sub-proofs in, one verifiable measurement out.
 
+**$SXTNT** — Solana SPL Token
+
+`7PYfwCU7u6JUN4pXKGQtsrkCed5KCjShyPq6hVgpump`
+
+[Trade on pump.fun →](https://pump.fun/coin/7PYfwCU7u6JUN4pXKGQtsrkCed5KCjShyPq6hVgpump)
+
 [![Site](https://img.shields.io/badge/site-sxtnt.fun-D4AF37?style=flat-square)](https://sxtnt.fun)
 [![X](https://img.shields.io/badge/X-@sxtnt__zk-1A2E4A?style=flat-square)](https://x.com/sxtnt_zk)
 [![Docs](https://img.shields.io/badge/docs-architecture-5BC0EB?style=flat-square)](./docs/architecture.md)
